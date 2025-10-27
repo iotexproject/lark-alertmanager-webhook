@@ -39,11 +39,11 @@ export default (alert, { withActions = false } = {}) => {
       title: {
         content: `${
           status === "resolved"
-            ? "✅ 报警解除"
+            ? "✅ Resolved"
             : {
-                critical: "🚨 集群报警",
-                warning: "⚠️ 集群风险",
-                info: "ℹ️ 集群提示",
+                critical: "🚨 Critical",
+                warning: "⚠️ Warning",
+                info: "ℹ️ Info",
               }[severity]
         }: ${alertname}`,
         tag: "plain_text",
@@ -57,15 +57,15 @@ export default (alert, { withActions = false } = {}) => {
             text: {
               content:
                 status === "resolved"
-                  ? `**🕐 结束时间：**\n${formatTime(endsAt)}`
-                  : `**🕐 开始时间：**\n${formatTime(startsAt)}`,
+                  ? `**🕐 EndsAt：**\n${formatTime(endsAt)}`
+                  : `**🕐 StartsAt：**\n${formatTime(startsAt)}`,
               tag: "lark_md",
             },
           },
           {
             is_short: true,
             text: {
-              content: `**🏷️ 事件类型：**\n${alertname}`,
+              content: `**🏷️ EventType：**\n${alertname}`,
               tag: "lark_md",
             },
           },
@@ -79,10 +79,10 @@ export default (alert, { withActions = false } = {}) => {
           {
             is_short: false,
             text: {
-              content: `**📝 事件描述：**\n${description}`,
+              content: `**📝 Description: **\n${description}`,
               tag: "lark_md",
             },
-          },
+          }
         ],
         tag: "div",
       },
@@ -112,35 +112,35 @@ export default (alert, { withActions = false } = {}) => {
               options: [
                 {
                   text: {
-                    content: "屏蔽30分钟",
+                    content: "Inhibit 30mins",
                     tag: "plain_text",
                   },
                   value: "time_30m",
                 },
                 {
                   text: {
-                    content: "屏蔽1小时",
+                    content: "Inhibit 1h",
                     tag: "plain_text",
                   },
                   value: "time_1h",
                 },
                 {
                   text: {
-                    content: "屏蔽4小时",
+                    content: "Inhibit 4h",
                     tag: "plain_text",
                   },
                   value: "time_4h",
                 },
                 {
                   text: {
-                    content: "屏蔽24小时",
+                    content: "Inhibit 24h",
                     tag: "plain_text",
                   },
                   value: "time_24h",
                 },
               ],
               placeholder: {
-                content: "暂时屏蔽报警",
+                content: "Inhibit Temporary",
                 tag: "plain_text",
               },
               tag: "select_static",

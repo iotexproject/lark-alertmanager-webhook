@@ -51,7 +51,7 @@ router.post("/webhook/alert/:hash", async (ctx) => {
   }
   try {
     for await (const alert of mapAlerts(ctx.request.body)) {
-      client.onAlert(alert);
+      await client.onAlert(alert);
     }
     ctx.body = "Message(s) sent";
   } catch (e) {
